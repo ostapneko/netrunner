@@ -13,10 +13,10 @@ object Installable {
 case class RunnerGame(clicks: Int = 4,
                       credits: Int = 5,
                       grip: Set[Card with RunnerFaction],
-                      heap: Set[Card with RunnerFaction] = Nil,
+                      heap: Set[Card with RunnerFaction] = Set.empty,
                       stack: Seq[Card with RunnerFaction],
-                      installed: Set[Installable] = Nil,
-                      scoredAgendas: Set[Agenda] = Nil,
+                      installed: Set[Installable] = Set.empty,
+                      scoredAgendas: Set[Agenda] = Set.empty,
                       tags: Int = 0,
                       brainDamages: Int = 0,
                       link: Int

@@ -1,14 +1,13 @@
 package netrunner
 
-sealed trait Identity { self: Faction =>
+sealed trait Identity[F <: Faction] {
   def influence: Int
   def minCardDeck: Int
   def name: String
 }
 
-trait Runner extends Identity { self: RunnerFaction =>
+trait Runner[F <: RunnerFaction] extends Identity[F] {
   def link: Int
 }
 
-trait Corp extends Identity { self: CorpFaction =>
-}
+trait Corp[F <: CorpFaction] extends Identity[F]

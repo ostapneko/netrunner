@@ -12,6 +12,7 @@ trait Card {
   def number: Int
   def cost: Int
   def title: String
+  def influence: Int
 }
 
 trait Agenda { self: CorpFaction =>
