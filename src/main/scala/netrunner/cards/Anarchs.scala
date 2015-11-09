@@ -1,19 +1,18 @@
 package netrunner.cards
 
-import netrunner.{Card, Anarchs, Event}
+import netrunner.Card.RunnerCard
+import netrunner.Event
+
+
+trait AnarchCard extends RunnerCard {
+  override def faction = netrunner.Anarchs
+}
 
 object Anarchs {
-  def dejaVu(n: Int) = new Card with Anarchs with Event {
-    override def number = n
-    override val cost = 2
-    override def title = "Déjà Vu"
-    override def influence = 2
-  }
-
-  def demolitionRun(n: Int) = new Card with Anarchs with Event {
-    override def number = n
-    override def cost = 2
-    override def title = "Demolition Run"
-    override def influence = 2
+  case class DejaVu(number: Int) extends AnarchCard {
+    val cost = 2
+    val title = "Déjà Vu"
+    val influence = 2
+    val `type` = Event
   }
 }

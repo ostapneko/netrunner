@@ -1,12 +1,17 @@
 package netrunner.cards
 
-import netrunner.{NeutralRunner, Event, Card}
+import netrunner.Card.RunnerCard
+import netrunner.Event
+
+trait NeutralCard extends RunnerCard {
+  override def faction = netrunner.NeutralRunner
+}
 
 object NeutralRunner {
-  def infiltration(n: Int) = new Card with NeutralRunner with Event {
-    override def number = n
-    override def cost = 0
-    override def title = "Infiltration"
-    override def influence = 0
+  case class Infiltration(number: Int) extends NeutralCard {
+    val cost = 0
+    val title = "Infiltration"
+    val influence = 0
+    val `type` = Event
   }
 }

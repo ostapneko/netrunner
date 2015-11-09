@@ -2,14 +2,14 @@ package netrunner
 
 sealed trait Faction
 sealed trait CorpFaction extends Faction
-trait NBN extends CorpFaction
-trait Weyland extends CorpFaction
-trait Jinteki extends CorpFaction
-trait HB extends CorpFaction
-trait NeutralCorp extends CorpFaction
+case object NBN extends CorpFaction
+case object Weyland extends CorpFaction
+case object Jinteki extends CorpFaction
+case object HB extends CorpFaction
+case object NeutralCorp extends CorpFaction
 
 sealed trait RunnerFaction extends Faction
-trait Shapers extends RunnerFaction
-trait Criminals extends RunnerFaction
-trait Anarchs extends RunnerFaction
-trait NeutralRunner extends RunnerFaction
+case object Shapers extends RunnerFaction
+case object Criminals extends RunnerFaction
+case object Anarchs extends RunnerFaction
+case object NeutralRunner extends RunnerFaction
