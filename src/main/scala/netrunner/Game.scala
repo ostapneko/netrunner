@@ -1,6 +1,7 @@
 package netrunner
 
-trait Game {
+trait Game[Side <: Faction] {
+  def identity: Identity[Side]
   def clicks: Int
   def credits: Int
 }

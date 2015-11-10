@@ -16,11 +16,13 @@ case class HQ(cards: Seq[CorpCard], ices: Seq[Ice] = Nil) extends CentralServer
 case class Archives(cards: Seq[CorpCard], ices: Seq[Ice] = Nil) extends CentralServer
 case class RD(cards: Seq[CorpCard], ices: Seq[Ice] = Nil) extends CentralServer
 
-case class CorpGame(clicks: Int = 3,
-                    credits: Int = 5,
-                    hq: HQ,
-                    archives: Archives = Archives(Nil, Nil),
-                    rd: RD,
-                    remoteServers: Set[RemoteServer] = Set.empty,
-                    scoredAgendas: Set[Agenda] = Set.empty,
-                    badPub: Int = 0) extends Game
+case class CorpGame(
+  identity: Identity[CorpFaction],
+  clicks: Int = 3,
+  credits: Int = 5,
+  hq: HQ,
+  archives: Archives = Archives(Nil, Nil),
+  rd: RD,
+  remoteServers: Set[RemoteServer] = Set.empty,
+  scoredAgendas: Set[Agenda] = Set.empty,
+  badPub: Int = 0) extends Game[CorpFaction]

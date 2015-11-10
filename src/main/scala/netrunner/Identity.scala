@@ -1,14 +1,11 @@
 package netrunner
 
-trait Identity[F <: Faction] {
+sealed trait Identity[+F <: Faction] {
   def influence: Int
   def minCardDeck: Int
   def name: String
-  def `type`: IdentityType[F]
-}
-
-sealed trait IdentityType[F <: Faction] {
   def faction: F
 }
-case class Runner[F <: Faction](link: Int, faction: F) extends IdentityType[F]
-case class Corp[F <: Faction](faction: F) extends IdentityType[F]
+
+case class CorpIdentity[+F <: CorpFaction](influence: Int, minCardDeck: Int, name: String, faction: F) extends Identity[F]
+case class RunnerIdentity[+F <: RunnerFaction](influence: Int, minCardDeck: Int, name: String, faction: F, link: Int) extends Identity[F]

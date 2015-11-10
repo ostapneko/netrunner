@@ -8,14 +8,14 @@ case object Barrier extends IceType
 case object CodeGate extends IceType
 case class Misc(name: String) extends IceType
 
-trait Card[Side <: Faction] {
-  def number: Int
-  def cost: Int
-  def title: String
-  def influence: Int
-  def faction: Side
-  def `type`: CardType[Side]
-}
+case class Card[F <: Faction](
+  number: Int,
+  cost: Int,
+  title: String,
+  influence: Int,
+  faction: F,
+  `type`: CardType[F]
+)
 
 object Card {
  type CorpCard = Card[CorpFaction]
@@ -23,7 +23,7 @@ object Card {
 }
 
 
-sealed trait CardType[Side <: Faction]
+sealed trait CardType[-Side <: Faction]
 
 case class Agenda(point: Int) extends CardType[CorpFaction]
 case class Asset(trashCost: Int) extends CardType[CorpFaction]

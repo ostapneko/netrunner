@@ -19,7 +19,7 @@ case class Deck[Side <: Faction](identity: Identity[Side], cards: Set[Card[Side]
     cards.size >= identity.minCardDeck
 
   private def usedInfluence(cards: Set[Card[Side]]) =
-    cards.toSeq.collect { case c if c.faction != identity.`type`.faction => c.influence }.sum
+    cards.toSeq.collect { case c if c.faction != identity.faction => c.influence }.sum
 
   private def influenceCheck(cards: Set[Card[Side]]): Boolean =
     usedInfluence(cards) <= identity.influence

@@ -6,30 +6,30 @@ import org.scalatest.FreeSpec
 import scalaz.syntax.validation._
 
 class DeckTest extends FreeSpec {
-  val corp = new Identity[CorpFaction] {
-    override def minCardDeck: Int = 5
-    override def name: String = "test identity"
-    override def influence: Int = 3
-    override def `type` = Corp(Jinteki)
-  }
+  val corp = CorpIdentity(
+    minCardDeck = 5,
+    name = "test identity",
+    influence = 3,
+    faction = Jinteki
+  )
 
-  def jinCard(n: Int, _title: String) = new CorpCard {
-    override def number = n
-    override def cost = 1
-    override def title = _title
-    override def influence = 3
-    override def faction = Jinteki
-    override def `type` = Operation
-  }
+  def jinCard(n: Int, _title: String) = new CorpCard(
+    number = n,
+    cost = 1,
+    title = _title,
+    influence = 3,
+    faction = Jinteki,
+    `type` = Operation
+  )
 
-  def nbnCard(n: Int, _title: String) = new CorpCard {
-    override def number = n
-    override def cost = 1
-    override def title = _title
-    override def influence = 3
-    override def faction = NBN
-    override def `type` = Operation
-  }
+  def nbnCard(n: Int, _title: String) = new CorpCard(
+    number = n,
+    cost = 1,
+    title = _title,
+    influence = 3,
+    faction = NBN,
+    `type` = Operation
+  )
 
   "A deck" - {
     "is invalid when" - {
