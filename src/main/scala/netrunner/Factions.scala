@@ -12,6 +12,7 @@ case object Weyland extends Weyland
 case object Jinteki extends Jinteki
 case object HB extends HB
 case object NeutralCorp extends NeutralCorp
+trait AnyCorp extends Weyland with Jinteki with HB with NeutralCorp
 
 sealed trait RunnerFaction extends Faction
 sealed trait Shapers extends RunnerFaction
@@ -22,3 +23,4 @@ case object Shapers extends Shapers
 case object Criminals extends Criminals
 case object Anarchs extends Anarchs
 case object NeutralRunner extends NeutralRunner
+trait AnyRunner extends Shapers with Anarchs with Criminals with NeutralRunner

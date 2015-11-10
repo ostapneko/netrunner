@@ -1,7 +1,10 @@
 package netrunner
 
-trait Game[Side <: Faction] {
-  def identity: Identity[Side]
-  def clicks: Int
-  def credits: Int
+import monocle.macros.GenLens
+
+case class Game(corp: CorpBoard, runner: RunnerBoard)
+
+case object Game {
+  val _corp = GenLens[Game](_.corp)
+  val _runner = GenLens[Game](_.runner)
 }
