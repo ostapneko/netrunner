@@ -18,8 +18,14 @@ trait CentralServer extends Server {
 
 case class RemoteServer(mainCard: CorpCard, upgrades: Seq[Upgrade], ices: Seq[Ice]) extends Server
 case class HQ(cards: Seq[CorpCard], ices: Seq[Ice] = Nil) extends CentralServer
+object HQ {
+  val _cards = GenLens[HQ](_.cards)
+}
 case class Archives(cards: Seq[CorpCard], ices: Seq[Ice] = Nil) extends CentralServer
 case class RD(cards: Seq[CorpCard], ices: Seq[Ice] = Nil) extends CentralServer
+object RD {
+  val _cards = GenLens[RD](_.cards)
+}
 
 case class CorpBoard(
   identity: Identity[CorpFaction],
